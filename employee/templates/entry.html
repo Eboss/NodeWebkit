@@ -2,12 +2,30 @@
 <head></head>
 <body ng-controller="empappctrl" ng-init="hostReachable()">
 	    <div style="margin:0 auto;width:250px" ng-show="reachability==1">Uploading offline data to server....</div><br><br>
-		<input type="text" placeholder="Employee Id" ng-model="emp_id"><br><br>
-		<input type="text" placeholder="Designation" ng-model="des"><br><br>
-		<input type="number" placeholder="Salary" ng-model="salary"><br><br>
-		<input style="margin-top:10px;" type="button" ng-click="fetch_db(emp_id, des, salary)" value="submit">
+		<div>
+			<input type="text" placeholder="Employee Id" ng-model="emp_id"><br><br>
+			<input type="text" placeholder="Designation" ng-model="des"><br><br>
+			<input type="number" placeholder="Salary" ng-model="salary"><br><br>
+			<input style="margin-top:10px;" type="button" ng-click="fetch_db(emp_id, des, salary)" value="submit">
+			<input type="button" value="fetch" ng-click="showAll()">{{fetch_data}}
+		</div>
+		<div>
+			<table>
+				<thead>
+					<th>Employee ID</th>
+					<th>Designation</th>
+					<th>Salary</th>
+				</thead>
+				<tbody>
+					<td>{{fetch_data.employeeid}}</td>
+					<td>{{fetch_data.Designation}}</td>
+					<td>{{fetch_data.salary}}</td>
+				</tbody>
+			</table>
+
+		</div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+<script src="../js/angular.min.js"></script>
 <script src="../js/index.js"></script>
 </html>
 

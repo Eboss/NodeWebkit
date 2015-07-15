@@ -3,10 +3,10 @@
 <body ng-controller="empappctrl">
 	<div style="position:absolute;left:175px;top:100px;	width:50%;height:50%;border:1px solid #ccc;">
 		<span style="margin-left:75px;display:inline-block;margin-top:75px;">Username : <input type="text" ng-model="name"></span><br/>
-		<span style="margin-left:75px;">Password : &nbsp;<input type="password" ng-model="password"></span><br/>
+		<span style="margin-left:75px;">Password : &nbsp;<input type="password" ng-model="password" ng-enter="check_login(name,password);"></span><br/>
 		<input style="margin-left:175px;margin-top:10px;" type="button" ng-click="check_login(name,password)" value="submit">
 	</div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
-<script src="../employee/js/index.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/index.js"></script>
 </html>
