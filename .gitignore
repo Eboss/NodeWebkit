@@ -1,0 +1,8 @@
+*.pyc
+*.log
+logs/*.log*
+*.db
+.DS_Store
+*.db
+*.out
+
