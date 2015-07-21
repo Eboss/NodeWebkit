@@ -43,6 +43,7 @@ app.controller('loginCtrl',function($scope,$http) {
 		};
 		tx.onabort = function() {
 		  console.log(tx.error);
+
 		};
 	}
 	
