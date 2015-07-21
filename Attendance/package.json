@@ -1,0 +1,18 @@
+{
+  "name": "Attendance",
+  "version": "0.0.0",
+  "description": "Colleage Attendance Desktop Application for offline use.",
+  "main": "login.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eboss/NodeWebkit.git"
+  },
+  "author": "iThoughtz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eboss/NodeWebkit/issues"
+  }
+}

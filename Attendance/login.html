@@ -1,0 +1,17 @@
+<html ng-app="login">
+<head>
+	<title>Welcome! Please Login!</title>
+	<link rel="stylesheet" type="text/css" href="static/css/login.css">
+</head>
+<body ng-controller="loginCtrl">
+ <div class="box">
+ 	<div class="login_container">
+	 	<div class="login_detail">Username : <input ng-model="name" type="text"></div>
+	 	<div class="login_detail">Password : <input ng-model="password" style="margin-left:5px;" type="password"></div>
+	 	<div class="login_button" ng-click="login(name,password)">Login</div>
+ 	</div>
+ </div>
+</body>
+<script src="static/js/angular.min.js"></script>
+<script src="static/js/login.js"></script>
+</html>
