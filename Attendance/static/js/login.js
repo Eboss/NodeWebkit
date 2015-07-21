@@ -23,10 +23,27 @@ app.controller('loginCtrl',function($scope,$http) {
 	request.onsuccess = function() {
 	  db = request.result;
 	};
-
-
 	$scope.login = function(name,password) {
+		var tx = db.transaction("employee", "readonly");
+		var req = tx.objectStore("employee").openCursor();
+		req.onsuccess = function(event) {
+		    var cursor = req.result;
+		}
 		console.log(name)
+	}
+	$scope.signup = function(name,password) {
+		var tx = db.transaction("login", "readwrite");
+		var store = tx.objectStore("login");
+		var request = store.put({uname: name, password: password});
+		request.onerror = function() {
+		  console.log(request.error);
+		};
+		request.onsuccess = function(event) {
+		  console.log(request);
+		};
+		tx.onabort = function() {
+		  console.log(tx.error);
+		};
 	}
 	
 })
