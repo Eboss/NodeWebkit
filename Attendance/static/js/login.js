@@ -1,4 +1,4 @@
-var app = angular.module('login',[])
+var app = angular.module('login',['ngRoute'])
 app.directive('ngEnter', function() {
         return function(scope, element, attrs) {
             element.bind("keydown keypress", function(event) {
@@ -12,7 +12,22 @@ app.directive('ngEnter', function() {
             });
         };
 }); 
-app.controller('loginCtrl',function($scope,$http) {
+app.config(['$routeProvider',
+ function($routeProvider) {
+    $routeProvider.
+       when('signup', {
+          templateUrl: 'signup.htm',
+          controller: 'loginCtrl'
+       }).
+       when('login', {
+          templateUrl: 'login.htm',
+          controller: 'loginCtrl'
+       }).
+       otherwise({
+          redirectTo: ''
+       });
+ }]);
+app.controller('loginCtrl',function($scope,$http,$location) {
 	var request = window.indexedDB.open("attendance");
 	request.onupgradeneeded = function() {
 	  var db = request.result;
@@ -22,18 +37,30 @@ app.controller('loginCtrl',function($scope,$http) {
 	};
 	request.onsuccess = function() {
 	  db = request.result;
+	  // var tx = db.transaction("login", "readonly");
+	  // var req = tx.objectStore("login").count();
+   //    req.onsuccess = function(event) {
+		 //  $scope.login_signup = req.result;
+		 //  console.log($scope.login_signup)
+		   	// window.location = 'login.html';
+		 // };
 	};
 	$scope.login = function(name,password) {
-		var tx = db.transaction("employee", "readonly");
-		var req = tx.objectStore("employee").openCursor();
+		var tx = db.transaction("login", "readonly");
+		var req = tx.objectStore("login").openCursor();
 		req.onsuccess = function(event) {
-		    var cursor = req.result;
+		    var cursor = req.result.value;
+		    console.log(name)
+		    if(cursor.uname == name && cursor.password == password) {
+		    	$scope.staff_name = name;
+		    	window.location = 'templates/home.html'
+		    }
 		}
-		console.log(name)
 	}
 	$scope.signup = function(name,password) {
 		var tx = db.transaction("login", "readwrite");
 		var store = tx.objectStore("login");
+		console.log('store',store)
 		var request = store.put({uname: name, password: password});
 		request.onerror = function() {
 		  console.log(request.error);
