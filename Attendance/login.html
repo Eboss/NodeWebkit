@@ -1,21 +1,31 @@
+<!DOCTYPE html>
 <html ng-app="login">
 <head>
 	<title>Welcome! Please Login!</title>
 	<link rel="stylesheet" type="text/css" href="static/css/login.css">
 </head>
 <body ng-controller="loginCtrl">
- <div class="box">
- 	<!-- <div ng-show="login_signup==0" class="login_container">
- 		<div class="login_detail">Username : <input ng-model="name" type="text"></div>
-	 	<div class="login_detail">Password : <input ng-model="password" style="margin-left:5px;" type="password"></div>
-	 	<div class="login_button" ng-click="signup(name,password)">Signup</div>
- 	</div> -->
- 	<div ng-show="login_signup!=0" class="login_container">
-	 	<div class="login_detail">Username : <input ng-model="name" type="text"></div>
-	 	<div class="login_detail">Password : <input ng-model="password" style="margin-left:5px;" type="password" ng-enter="login(name,password)"></div>
-	 	<div class="login_button" ng-click="login(name,password)">Login</div>
- 	</div>
- </div>
+	<img style="position: absolute;top: 0px;width:100%;left: 0px;" src="static/images/logo.png">
+	<div class="background">
+		<div class="login">
+			<div class="login-screen">
+				<div class="app-title">
+					<h1>Login</h1>
+				</div>
+				<div class="login-form">
+					<div class="control-group">
+					<input type="text" ng-model="name" placeholder="&nbsp;&nbsp;&nbsp;username">
+					</div>
+					<div class="control-group">
+					<input type="password" ng-model="password" placeholder="&nbsp;&nbsp;&nbsp;password"  ng-enter="login(name,password)">
+					</div>
+					<a class="forgotpass" href="#">Forgot password?</a>
+					<span class="btn btn-primary btn-large btn-block" ng-click="login(name,password)">login</span>
+					
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 <script src="static/js/angular.min.js"></script>
 <script src="static/js/angular-route.min.js"></script>

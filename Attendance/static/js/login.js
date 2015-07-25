@@ -28,6 +28,8 @@ app.config(['$routeProvider',
        });
  }]);
 app.controller('loginCtrl',function($scope,$http,$location) {
+	$scope.login_signup = 0;
+	console.log($scope.login_signup)
 	var request = window.indexedDB.open("attendance");
 	request.onupgradeneeded = function() {
 	  var db = request.result;
@@ -37,23 +39,28 @@ app.controller('loginCtrl',function($scope,$http,$location) {
 	};
 	request.onsuccess = function() {
 	  db = request.result;
-	  // var tx = db.transaction("login", "readonly");
-	  // var req = tx.objectStore("login").count();
-   //    req.onsuccess = function(event) {
-		 //  $scope.login_signup = req.result;
-		 //  console.log($scope.login_signup)
+	  var tx = db.transaction("login", "readonly");
+	  var req = tx.objectStore("login").count();
+      req.onsuccess = function(event) {
+		  $scope.login_signup = req.result;
+		  console.log($scope.login_signup)
+		  $scope.$apply();
 		   	// window.location = 'login.html';
-		 // };
+		 };
 	};
 	$scope.login = function(name,password) {
 		var tx = db.transaction("login", "readonly");
 		var req = tx.objectStore("login").openCursor();
+		console.log(req)
 		req.onsuccess = function(event) {
 		    var cursor = req.result.value;
 		    console.log(name)
 		    if(cursor.uname == name && cursor.password == password) {
 		    	$scope.staff_name = name;
-		    	window.location = 'templates/home.html'
+		    	window.location = 'templates/attendance.html'
+		    }
+		    else {
+		    	alert('Please check Your username and Password!')		    	
 		    }
 		}
 	}

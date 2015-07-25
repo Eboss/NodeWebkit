@@ -1,24 +1,69 @@
-div.box {
-	width: 280px;
-	padding: 20px;
-	border: 1px solid #000;
-	margin: 115px auto;
+body {
+background-color: #3498DB;
+padding: 150px;
 }
-.login_button {
-	border: 1px solid #ccc;
-  	border-radius: 20px;
-  	width: 75px;
-  	text-indent: 7.5px;
-  	height: 30px;
-  	margin-left: 130px;
-  	color: #fff;
-  	background-color: #2B84E0;
-  	padding-left: 25px;
-  	padding-top: 10px;
-  	cursor: pointer;
-
+.background {
+font-family: Arial;
+background-color: #3498DB;
 }
-.login_detail {
-	font-size: 20px;
-	margin-bottom: 15px;
+.login {
+margin: 20px auto;
+width: 300px;
+}
+.login-screen {
+background-color: #FFF;
+padding: 20px;
+border-radius: 5px
+}
+.app-title {
+text-align: center;
+color: #777;
+}
+.login-form {
+text-align: center;
+}
+.control-group {
+margin-bottom: 10px;
+}
+input {
+text-align: center;
+background-color: #ECF0F1;
+border: 2px solid transparent;
+border-radius: 5px;
+font-size: 16px;
+font-weight: 200;
+padding: 10px 0;
+width: 250px;
+transition: border .5s;
+}
+input:focus {
+border: 2px solid #3498DB;
+box-shadow: none;
+}
+.btn {
+  border: 2px solid transparent;
+  background: #3498DB;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  box-shadow: none;
+  transition: 0.25s;
+  display: block;
+  width: 250px;
+  margin: 5px auto;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #2980B9;
+}
+.forgotpass {
+  text-align: left;
+  font-size: 12px;
+  color: #444;
+  display: block;
+  margin-top: 10px;
 }
