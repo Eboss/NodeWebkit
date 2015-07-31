@@ -13,6 +13,14 @@ app.directive('ngEnter', function() {
         };
 }); 
 app.controller('homeCtrl',function($scope,$http,$location) {
+    var data = {
+        Subject1: ['Staff1'],
+        Subject2: ['Staff2'],
+        Subject3: ['Staff3'],
+        Subject4: ['Staff4'],
+        Subject5: ['Staff5'],
+    };
+    $scope.course = data;
     $scope.staff_name = '';
     $scope.date = new Date();
     console.log($scope.date)
@@ -62,20 +70,6 @@ app.controller('homeCtrl',function($scope,$http,$location) {
             }
         }, {
             name: 'Student4',
-            sessions: {
-                'Session1': 'present',
-                'Session2': 'present',
-                'Session3': 'present',
-                'Session4': 'present',
-                'Session5': 'present',
-                'Session6': 'present',
-                'Session7': 'present',
-                'Session8': 'present',
-                'Session9': 'present',
-                'Session10': 'present'
-            }
-        }, {
-            name: 'Student5',
             sessions: {
                 'Session1': 'present',
                 'Session2': 'present',

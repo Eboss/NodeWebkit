@@ -6,40 +6,60 @@
 <body ng-controller="homeCtrl">
     <div class="row">
             <div class="col-lg-12">
-                <span class="page-header">Select Date: <input type="date" ng-model="date"></span>
+                <span style="margin: 308px;font-size:30px;">Select Course &nbsp;&nbsp;&nbsp;: <select ng-model="sub" style="width:15%;display: -webkit-inline-box;" ng-options="sub as sub for (sub,val) in course" class="form-control"><option value="">Select Course</option></select>
+                </span>
+                <span ng-show="!course[sub][0]" style="margin: 302px;font-size:30px;">Instructor Name : <span style="display:inline-block;font-size:20px;"> shown here </span></span>
+                <span ng-show="course[sub][0]" style="margin: 309px;font-size:30px;">Instructor Name : {{course[sub][0]}}</span>
+                <!-- <input  style="width:25%;display: -webkit-inline-box;" type="text" placeholder="{{}}"> -->
+                <!-- <select ng-model="staff" style="margin: 10px 400px;width:15%;display: -webkit-inline-box;" ng-options="staff for staff in course[sub]" class="form-control"></select> -->
             </div>
+            <br/><br/>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    {{attendanceData.sesssions}}
-                    <table class="table table-bordered table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th ng-repeat="a in attendanceData['sessions']">{{a}}</th>
-                            </tr>
-                        </thead>
-                        <tbody style="overflow-y:scroll">
-                            <tr ng-repeat="student in attendanceData['studentsData']">
-                                <td>{{student.name}}</td>
-                                <td ng-repeat="a in attendanceData['sessions']" style="text-align:center;vertical-align:middle;">
-                                    <label>
-                                        <input type="radio" ng-model="student.sessions[a]" value="present"> <i class="fa fa-check-circle-o"></i>
-                                    </label>
-                                    </br>
-                                    <label>
-                                        <input type="radio" ng-model="student.sessions[a]" value="abbsent"> <i class="fa fa-times-circle-o"></i>
-                                    </label>
-                                    </br>
-                                    <label>
-                                        <input type="radio" ng-model="student.sessions[a]" value="permission"> <i class="fa fa-minus-circle"></i>
-                                    </label>
-                                    </br>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <!-- {{attendanceData.sesssions}} -->
+                    <div style="float:left;display:inline-block;width:20%;">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>                                
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody style="overflow-y:scroll">
+                                <tr ng-repeat="student in attendanceData['studentsData']">
+                                    <td style="height:101px;">{{student.name}}</td>
+                                </tr>
+                            </tbody>        
+                        </table>
+                    </div>
+                    <div style="float:left;display:inline-block;width:80%;overflow-x:scroll;">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>                                
+                                    <th ng-repeat="a in attendanceData['sessions']">{{a}}</th>
+                                </tr>
+                            </thead>
+                            <tbody style="overflow-y:scroll">
+                                <tr ng-repeat="student in attendanceData['studentsData']">     
+                                    <td ng-repeat="a in attendanceData['sessions']" style="text-align:center;vertical-align:middle;">
+                                        <label>
+                                            <input type="radio" ng-model="student.sessions[a]" value="present"> <i class="fa fa-check-circle-o"></i>
+                                        </label>
+                                        </br>
+                                        <label>
+                                            <input type="radio" ng-model="student.sessions[a]" value="abbsent"> <i class="fa fa-times-circle-o"></i>
+                                        </label>
+                                        </br>
+                                        <label>
+                                            <input type="radio" ng-model="student.sessions[a]" value="permission"> <i class="fa fa-minus-circle"></i>
+                                        </label>
+                                        </br>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>    
                 </div>
             </div>
         </div>
