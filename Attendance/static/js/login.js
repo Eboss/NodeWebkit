@@ -39,6 +39,11 @@ app.controller('loginCtrl',function($scope,$http,$location) {
 	  var store = db.createObjectStore("login", {keyPath: "uname"});
 	  var uname = store.createIndex("uname", "uname", {unique: true});
 	  var password = store.createIndex("password", "password");
+	  var staff_name = store.createIndex("staff_name","staff_name");
+	  var email = store.createIndex("email","email");
+	  var mobile = store.createIndex("mobile","mobile");
+	  var role = store.createIndex("role","role");
+	  var address = store.createIndex("address","address");
 	};
 	request.onsuccess = function() {
 	  db = request.result;
@@ -63,22 +68,28 @@ app.controller('loginCtrl',function($scope,$http,$location) {
 		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}).success(function(response){
 			console.log('value',response)
-			if(response.data=='success') {
+			if(response.status=='success') {
 				var tx = db.transaction("login", "readwrite");
 				var store = tx.objectStore("login");
-				var request = store.put({uname: name, password: password});
+				if(response.user_data.length !=0) {
+					var data = response.user_data[0] 
+					var request = store.put({uname: name, password: password,staff_name: data.name,email: data.email,mobile: data.mobile,role:data.role,address:data.address});
+				}
+				else {
+					var request = store.put({uname: name, password: password,staff_name: response.user_data});
+				}
 				request.onerror = function() {
 				  console.log(request.error);
 				};
 				request.onsuccess = function(event) {
 				  console.log(request,'val');
-				  window.location = 'templates/attendance.html';
+				  window.location = 'templates/home.html';
 				};
 				tx.onabort = function() {
 				  console.log(tx.error);
 				};
 			}
-			else if(response.data=='failed') {
+			else if(response.status=='failed') {
 				alert("Username Password didn't Match!")
 			}
 		})
@@ -92,7 +103,7 @@ app.controller('loginCtrl',function($scope,$http,$location) {
 			    console.log(name)
 			    if(cursor.uname == name && cursor.password == password) {
 			    	$scope.staff_name = name;
-			    	window.location = 'templates/attendance.html'
+			    	window.location = 'templates/home.html'
 			    }
 			    else {
 			    	alert('Please check Your username and Password!')		    	

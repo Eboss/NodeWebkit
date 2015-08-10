@@ -1,4 +1,4 @@
-var app = angular.module('home',[])
+var app = angular.module('home',['ui.bootstrap'])
 app.directive('ngEnter', function() {
         return function(scope, element, attrs) {
             element.bind("keydown keypress", function(event) {

@@ -1,24 +1,25 @@
 <html ng-app="home">
-<head>Welcome</head>
+<head>
+  <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
 <body ng-controller="homeCtrl">
-	{{staff_name}}
-	<div>
-		<tabset>
-            <tab style="cursor:pointer;" active="" disabled="">
-                <tab-heading>
-                    Add New
-                </tab-heading>
-                <div style="padding:10px;" class="tbodyrow">no user alert found!</div>
-            </tab>
-            <tab style="cursor:pointer;" active="" disabled="">
-                <tab-heading>
-                    View Attendance
-                </tab-heading>
-                <div>hi all</div>
-            </tab>
-        </tabset>        
-	</div>
+    <div>
+        <tabset>
+          <tab>
+            <tab-heading>
+              <span>Welcome! {{staff_name}}</span>
+            </tab-heading>
+            Name : {{}}
+          </tab>
+          <tab heading="Time Table">Time Table</tab>
+          <tab heading="Attendance">Attendance</tab>
+          <span style="float:right;"></span>
+        </tabset>
+    </div>
+
+
 </body>
 <script src="../static/js/angular.min.js"></script>
+<script src="../static/bootstrap/js/ui-bootstrap-tpls-0.13.2.min.js"></script>
 <script src="../static/js/home.js"></script>
 </html>
