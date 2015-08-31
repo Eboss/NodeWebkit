@@ -111,24 +111,24 @@ app.controller('loginCtrl',function($scope,$http,$location) {
 			}
 		}
 	}
-	// $scope.signup = function(name,password) {
-	// 	console.log('signup')
-	// 	var tx = db.transaction("login", "readwrite");
-	// 	var store = tx.objectStore("login");
-	// 	console.log('store',store)
-	// 	var request = store.put({uname: name, password: password});
-	// 	request.onerror = function() {
-	// 	  console.log(request.error);
-	// 	};
-	// 	request.onsuccess = function(event) {
-	// 	  console.log(request);
-	// 	  window.location = 'login.html'
-	// 	};
-	// 	tx.onabort = function() {
-	// 	  console.log(tx.error);
+	$scope.signup = function(name,password) {
+		console.log('signup')
+		var tx = db.transaction("login", "readwrite");
+		var store = tx.objectStore("login");
+		console.log('store',store)
+		var request = store.put({uname: name, password: password});
+		request.onerror = function() {
+		  console.log(request.error);
+		};
+		request.onsuccess = function(event) {
+		  console.log(request);
+		  window.location = 'login.html'
+		};
+		tx.onabort = function() {
+		  console.log(tx.error);
 
-	// 	};
-	// }
+		};
+	}
 	
 })
 
